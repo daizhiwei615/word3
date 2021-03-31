@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daizhiwei.dao.Coursedao">
+    <!--使用sql语句标签-->
+    <insert id="insertcourse">
+       insert into Course(cname,cstartyear,cstartterm) value (#{cname},#{cstartyear},#{cstartterm})
+    </insert>
+
+    <select id="selecourse" resultType="com.daizhiwei.entity.Course">
+select * from  Course where cno=#{cno}
+    </select>
+
+    <update id="upcourse">
+        update  course set cno=#{cno},cname=#{cname},cstartyear=#{cstartyear},cstartterm=#{cstartterm}  where cno= #{cno}
+    </update>
+
+<delete id="deletecourse">
+delete  from Course where cno= #{cno}
+</delete>
+
+    <select id="selecourse4" resultType="com.daizhiwei.entity.Course">
+        select * from  course where  1=1
+        <if test="cname != null and cname !='' ">
+     and    cname = #{cname}
+         </if>
+        <if test="cstartyear != null and cstartyear !='' ">
+        AND cstartyear=#{cstartyear}
+        </if>
+        <if test="cstartterm != null and cstartterm !='' ">
+         AND cstartterm=#{cstartterm}
+        </if>
+    </select>
+
+
+    <delete id="deleteCourse">
+        delete  from  course where cno = #{cno}
+    </delete>
+
+</mapper>

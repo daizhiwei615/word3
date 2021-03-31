@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daizhiwei.dao.Classroomdao">
+    <!--使用sql语句标签-->
+    <select id="searchclassroom" resultType="com.daizhiwei.entity.Classroom">
+ select * from  classroom where 1=1
+        <if test="house != null and house !='' ">
+            and    house = #{house}
+        </if>
+        <if test="room != null and room !='' ">
+            AND room=#{room}
+        </if>
+    </select>
+
+    <insert id="insertclassroom">
+       insert into classroom (cid,house,room) value (#{cid},#{house},#{room})
+    </insert>
+
+    <select id="seleclassroom" resultType="com.daizhiwei.entity.Classroom">
+select * from  classroom where cid=#{cid}
+    </select>
+    <update id="upclassroom">
+        update  classroom set cid=#{cid},house=#{house},room=#{room} where cid=#{cid}
+    </update>
+
+    <delete id="deleteclassroom">
+        delete  from  classroom where cid=#{cid}
+    </delete>
+
+</mapper>

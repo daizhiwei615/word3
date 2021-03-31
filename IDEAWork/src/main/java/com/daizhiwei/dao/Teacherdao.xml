@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daizhiwei.dao.Teacherdao">
+    <!--使用sql语句标签-->
+    <select id="searchTeacher" resultType="com.daizhiwei.entity.Teacher">
+ select * from  Teacher
+    </select>
+
+    <select id="searchteacher" resultType="com.daizhiwei.entity.Teacher">
+        select * from  Teacher where 1=1
+        <if test="Tname != null and Tname !='' ">
+            and    Tname = #{Tname}
+        </if>
+        <if test="Tage != null and Tage !='' ">
+            AND Tage=#{Tage}
+        </if>
+    </select>
+
+    <insert id="insertteacher">
+       insert into Teacher (Tid,Tname,Tage) value (#{Tid},#{Tname},#{Tage})
+    </insert>
+
+    <select id="seleteacher" resultType="com.daizhiwei.entity.Teacher">
+select * from  Teacher where Tid=#{Tid}
+    </select>
+    <update id="upteacher">
+        update  Teacher set Tid=#{Tid},Tname = #{Tname},Tage=#{Tage} where Tid=#{Tid}
+    </update>
+
+    <delete id="deleteteacher">
+        delete  from  Teacher where Tid=#{Tid}
+    </delete>
+
+</mapper>

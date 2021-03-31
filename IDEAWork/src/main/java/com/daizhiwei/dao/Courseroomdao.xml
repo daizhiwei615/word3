@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daizhiwei.dao.Courseroomdao">
+    <!--使用sql语句标签-->
+    <insert id="insertcourseroom">
+       insert into courseroom(cno,tid,cid,week,starttime,lasttime) value (#{cno},#{tid},#{cid},#{week},#{starttime},#{lasttime})
+    </insert>
+    <select id="searchCourseroom" resultType="com.daizhiwei.entity.Courseroom">
+        select * from courseroom where   cid=#{cid} and  week=#{week}
+    </select>
+    <select id="selecourseroom" resultType="com.daizhiwei.entity.Courseroom">
+select * from  courseroom where id=#{id}
+    </select>
+    <update id="upcourseroom">
+        update  courseroom set id=#{id},cno=#{cno},tid=#{tid},cid=#{cid},week=#{week} ,starttime=#{starttime},lasttime=#{lasttime} where id=#{id}
+    </update>
+
+    <delete id="deleteCourseroom">
+        delete  from  courseroom where id=#{id}
+    </delete>
+</mapper>

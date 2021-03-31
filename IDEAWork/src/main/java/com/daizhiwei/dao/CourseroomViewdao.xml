@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daizhiwei.dao.CourseroomViewdao">
+    <!--使用sql语句标签-->
+    <select id="searchCourseroomView" resultType="com.daizhiwei.entity.CourseroomView">
+          select * from courseroomView where  1=1
+        <if test="cname != null and cname !='' ">
+            and    cname = #{cname}
+        </if>
+        <if test="house != null and house !='' ">
+            and    house = #{house}
+        </if>
+        <if test="cstartyear != null and cstartyear !='' ">
+            AND cstartyear=#{cstartyear}
+        </if>
+        <if test="cstartterm != null and cstartterm !='' ">
+            AND cstartterm=#{cstartterm}
+        </if>
+    </select>
+    <select id="selecourseroomview" resultType="com.daizhiwei.entity.CourseroomView">
+select * from  courseroomView where id=#{id}
+    </select>
+
+
+</mapper>
